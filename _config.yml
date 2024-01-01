@@ -1,4 +1,4 @@
-remote_theme: "mmistakes/so-simple-theme@3.2.0"url: mkeeves.github.io
+url: mkeeves.github.io
 baseurl: /www
 
 collections:
