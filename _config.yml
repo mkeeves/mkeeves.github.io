@@ -1,4 +1,4 @@
-url: mkeeves.github.io
+remote_theme: "mmistakes/so-simple-theme@3.2.0"url: mkeeves.github.io
 baseurl: /www
 
 collections:
@@ -21,9 +21,11 @@ defaults:
     values:
       layout: "default"
 
+remote_theme: "mmistakes/so-simple-theme@3.2.0"
+
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-remote-theme
 
-remote_theme: "mmistakes/so-simple-theme@3.2.0"
