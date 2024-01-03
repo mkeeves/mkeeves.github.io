@@ -1,4 +1,14 @@
+### Site metadata ###
+
+title: My GitHub Projects
+
+repository: mkeeves/mkeeves.github.io
+author: Mike Keeves
+
+### Build settings ###
+
 url: mkeeves.github.io
+baseurl: ""
 
 collections:
   authors:
