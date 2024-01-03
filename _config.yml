@@ -7,8 +7,8 @@ author: Mike Keeves
 
 ### Build settings ###
 
-url: mkeeves.github.io
-baseurl: ""
+#url: mkeeves.github.io
+#baseurl: ""
 
 collections:
   authors:
