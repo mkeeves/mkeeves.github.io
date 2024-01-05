@@ -1,3 +1,9 @@
+---
+layout: post
+author: mike
+---
+
+{% highlight powershell linenos %}
 #### Ping Logging with time
 
 Start-Transcript -path C:/Script/PingLog.txt -Append | Ping.exe -t 192.168.1.1 | ForEach {“{0} – {1}” -f (Get-Date),$_}
@@ -69,3 +75,5 @@ foreach ($source in $sources){
     }
 
 }
+
+{% endhighlight %}

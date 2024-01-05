@@ -1,3 +1,9 @@
+---
+layout: post
+author: mike
+---
+
+{% highlight powershell linenos %}
 $Users = “samaccountname1|samaccountname2”
 
 $Users = $Users.Split(“|”)
@@ -19,3 +25,5 @@ ForEach ($User in $Users) {
    Else {Write-Host $UPN $MethodType -f Red}
 
 }
+
+{% endhighlight %}

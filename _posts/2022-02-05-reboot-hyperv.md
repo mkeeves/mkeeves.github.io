@@ -1,3 +1,9 @@
+---
+layout: post
+author: mike
+---
+
+{% highlight powershell linenos %}
 $Target = "targetmachine"
 $FilePath = "C:\temp\RunningVMs.txt"
 $Session = New-PSSession -ComputerName $Target
@@ -37,3 +43,4 @@ if ($IsPendingReboot -eq $true) {
     Remove-Item -Path $using:FilePath
     }
   }
+{% endhighlight %}

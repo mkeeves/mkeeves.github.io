@@ -1,3 +1,9 @@
+---
+layout: post
+author: mike
+---
+
+{% highlight conf linenos %}
 #### Debug Commands
 
 diagnose debug disable
@@ -33,3 +39,5 @@ configure system interface edit set lacp-mode {static | passive | active}
 #### ARP
 
 get system arp
+
+{% endhighlight %}

@@ -1,3 +1,11 @@
+---
+layout: post
+author: mike
+---
+
+{% highlight powershell linenos %}
+
+
 #### Mailbox Rules
 
 Get-Mailbox SomePerson@contoso.com |
@@ -13,3 +21,5 @@ Get-Mailbox firstname.surname@contoso.com | Remove-MailboxPermission -User “gr
 set-mailbox <mailbox name> -MessageCopyForSentAsEnabled $True
 
 set-mailbox <mailbox name> -MessageCopyForSendOnBehalfEnabled $True
+
+{% endhighlight %}

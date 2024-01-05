@@ -1,3 +1,9 @@
+---
+layout: post
+author: mike
+---
+
+{% highlight conf linenos %}
 request_import.txt
 
 ; 1. Copy template folder and create new folder which matches the common name of the certificate required
@@ -39,3 +45,5 @@ Run the following command to generate the private key
 .._OpenSSL-Win64\bin\openssl.exe pkcs12 -in *.pfx -nocerts -out private.key
 Run the following command to generate the certificate file
 .._OpenSSL-Win64\bin\openssl.exe pkcs12 -in *.pfx -clcerts -nokeys -out certfilename.crt
+
+{% endhighlight %}

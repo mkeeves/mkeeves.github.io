@@ -1,3 +1,10 @@
+---
+layout: post
+author: mike
+---
+
+{% highlight powershell linenos %}
+
 #### Get mounted ISOs
 
 $Cluster = clustername
@@ -11,3 +18,5 @@ foreach ($clusternode in $clusternodes) {get-vm -computername $clusternode.name 
 $VMs = server1,server2,server3
 
 Get-VMHardDiskDrive -ComputerName diplodocus -VMName $VMs -ControllerNumber 1 | Remove-VMHardDiskDrive
+
+{% endhighlight %}

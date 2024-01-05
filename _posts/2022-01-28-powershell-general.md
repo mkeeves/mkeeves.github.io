@@ -1,3 +1,10 @@
+---
+layout: post
+author: mike
+---
+
+{% highlight powershell linenos %}
+
 #### Get AD Schema version 
 
 Get-ADObject (Get-ADRootDSE).schemaNamingContext -Property objectVersion
@@ -89,3 +96,5 @@ From <https://msunified.net/2016/05/25/how-to-set-ipv4-as-preferred-ip-on-window
 New-ItemProperty “HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters\” -Name DisabledComponents -Value 0x20 -PropertyType “DWord”
 
 Set-ItemProperty “HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters\” -Name DisabledComponents -Value 0x20 -PropertyType “DWord”
+
+{% endhighlight %}
