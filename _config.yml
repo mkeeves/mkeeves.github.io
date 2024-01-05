@@ -27,24 +27,24 @@ collections:
   authors:
     output: true
 
-defaults:
-  - scope:
-      path: ""
-      type: "authors"
-    values:
-      layout: "author"
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-  - scope:
-      path: ""
-    values:
-      layout: "default"
+#defaults:
+#  - scope:
+#      path: ""
+#      type: "authors"
+#    values:
+#      layout: "author"
+#  - scope:
+#      path: ""
+#      type: "posts"
+#    values:
+#      layout: "post"
+#  - scope:
+#      path: ""
+#    values:
+#      layout: "default"
 
-remote_theme: pages-themes/slate@v0.2.0
-#remote_theme: "mmistakes/so-simple-theme@3.2.0"
+#remote_theme: pages-themes/slate@v0.2.0
+remote_theme: "mmistakes/so-simple-theme@3.2.0"
 
 plugins:
   - jekyll-feed
