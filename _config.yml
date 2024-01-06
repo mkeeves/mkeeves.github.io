@@ -18,6 +18,12 @@ author: Mike Keeves
 
 copyright: "This site is made with <3 by *me, myself, and I*."
 
+google_fonts:
+  - name: "Source Sans Pro"
+    weights: "400,400i,700,700i"
+  - name: "Lora"
+    weights: "400,400i,700,700i"
+
 ### Build settings ###
 
 #url: mkeeves.github.io
