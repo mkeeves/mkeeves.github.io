@@ -14,3 +14,5 @@ Here is the final result...
 ![Pic 1](https://github.com/mkeeves/mkeeves.github.io_images/blob/main/2024-09-11-ios-shortcuts-google-nav-1-click/1.png "")
 
 ![Pic 2](https://github.com/mkeeves/mkeeves.github.io_images/blob/main/2024-09-11-ios-shortcuts-google-nav-1-click/2.png "")
+
+<img src="https://github.com/mkeeves/mkeeves.github.io_images/blob/main/2024-09-11-ios-shortcuts-google-nav-1-click/1.png" />
