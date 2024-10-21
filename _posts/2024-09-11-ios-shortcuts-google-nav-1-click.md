@@ -18,3 +18,5 @@ Here is the final result...
 <img src="https://github.com/mkeeves/mkeeves.github.io_images/blob/main/2024-09-11-ios-shortcuts-google-nav-1-click/1.jpg" />
 
 <img src="https://hagleysbeauty.com/wp-content/uploads/2023/03/test-button-1-100x100.jpg" />
+
+<img src="https://github.com/mkeeves/mkeeves.github.io_images/blob/ac0504f31b0bc4db890068f591a8d60876ffab2b/2024-09-11-ios-shortcuts-google-nav-1-click/1.jpg" />
