@@ -6,17 +6,17 @@ I began by following a guide from another blog (https://www.upsync.dev/2022/08/0
 
 After some googling, followed by a little trial and error, I amended the last 2 steps in the shortcut. The penultimate step now uses the URL of the Universal maps URI scheme, and the last step opens the x-callback-url.
 
-<img title="a title" alt="Alt text" src="https://github.com/mkeeves/mkeeves.github.io_images/blob/main/2024-09-11-ios-shortcuts-google-nav-1-click/1.png">
+<img title="a title" alt="Alt text" src="../assets/2024-09-11-ios-shortcuts-google-nav-1-click/1.png">
 
 Because shortcuts can be added as widgets on iOS, I can now start navigating locations I've saved using this shortcut very quickly. If I want to add another destination, then it's easy to duplicate the shortct and amend the destination.
 
 Here is the final result...
-![Pic 1](https://github.com/mkeeves/mkeeves.github.io_images/blob/main/2024-09-11-ios-shortcuts-google-nav-1-click/1.png "")
+![Pic 1](../assets/2024-09-11-ios-shortcuts-google-nav-1-click/1.png "")
 
-![Pic 2](https://github.com/mkeeves/mkeeves.github.io_images/blob/main/2024-09-11-ios-shortcuts-google-nav-1-click/2.png "")
+![Pic 2](../assets/2024-09-11-ios-shortcuts-google-nav-1-click/1.png "")
 
-<img src="https://github.com/mkeeves/mkeeves.github.io_images/blob/main/2024-09-11-ios-shortcuts-google-nav-1-click/1.jpg" />
+<img src="../assets/2024-09-11-ios-shortcuts-google-nav-1-click/1.png" />
 
-<img src="https://hagleysbeauty.com/wp-content/uploads/2023/03/test-button-1-100x100.jpg" />
+<img src="../assets/2024-09-11-ios-shortcuts-google-nav-1-click/1.png" />
 
-<img src="https://github.com/mkeeves/mkeeves.github.io_images/blob/ac0504f31b0bc4db890068f591a8d60876ffab2b/2024-09-11-ios-shortcuts-google-nav-1-click/1.jpg" />
+<img src="../assets/2024-09-11-ios-shortcuts-google-nav-1-click/1.png" />
