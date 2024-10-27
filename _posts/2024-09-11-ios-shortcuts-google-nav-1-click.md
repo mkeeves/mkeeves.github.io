@@ -11,12 +11,14 @@ After some googling, followed by a little trial and error, I amended the last 2 
 Because shortcuts can be added as widgets on iOS, I can now start navigating locations I've saved using this shortcut very quickly. If I want to add another destination, then it's easy to duplicate the shortct and amend the destination.
 
 Here is the final result...
-![Pic 1](../assets/2024-09-11-ios-shortcuts-google-nav-1-click/1.png "")
+![Pic 1](../assets/2024-09-11-ios-shortcuts-google-nav-1-click/1.jpg "")
 
-![Pic 2](../assets/2024-09-11-ios-shortcuts-google-nav-1-click/1.png "")
+![Pic 2](../assets/2024-09-11-ios-shortcuts-google-nav-1-click/1.jpg "")
 
-<img src="../assets/2024-09-11-ios-shortcuts-google-nav-1-click/1.png" />
+<img src="../assets/2024-09-11-ios-shortcuts-google-nav-1-click/1.jpg" />
 
-<img src="../assets/2024-09-11-ios-shortcuts-google-nav-1-click/1.png" />
+<img src="../assets/2024-09-11-ios-shortcuts-google-nav-1-click/1.jpg" />
 
-<img src="../assets/2024-09-11-ios-shortcuts-google-nav-1-click/1.png" />
+<img src="../assets/2024-09-11-ios-shortcuts-google-nav-1-click/1.jpg" />
+
+![Pic 1](/mkeeves.github.io/assets/images/logo.jpg)
