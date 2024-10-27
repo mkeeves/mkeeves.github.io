@@ -21,4 +21,4 @@ Here is the final result...
 
 <img src="../assets/2024-09-11-ios-shortcuts-google-nav-1-click/1.jpg" />
 
-![Pic 1](/mkeeves.github.io/assets/images/logo.jpg)
+![Pic 1](/assets/images/logo.jpg)
