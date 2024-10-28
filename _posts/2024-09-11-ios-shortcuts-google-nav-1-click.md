@@ -6,9 +6,7 @@ I began by following a guide from another blog (https://www.upsync.dev/2022/08/0
 
 After some googling, followed by a little trial and error, I amended the last 2 steps in the shortcut. The penultimate step now uses the URL of the Universal maps URI scheme, and the last step opens the x-callback-url.
 
-<img title="a title" alt="Alt text" src="../assets/2024-09-11-ios-shortcuts-google-nav-1-click/1.png">
-
-Because shortcuts can be added as widgets on iOS, I can now start navigating locations I've saved using this shortcut very quickly. If I want to add another destination, then it's easy to duplicate the shortct and amend the destination.
+Because shortcuts can be added as widgets on iOS, I can now start navigating locations I've saved using this shortcut very quickly. If I want to add another destination, then it's easy to duplicate the shortcut and amend the destination.
 
 Here is the final result...
 ![Pic 1](/mkeeves.github.io_images/2024-09-11-ios-shortcuts-google-nav-1-click/1.jpg)
