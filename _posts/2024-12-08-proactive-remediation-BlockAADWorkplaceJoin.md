@@ -26,7 +26,7 @@ Blocking Workplace join prevents users from being prompted to join their device 
 # exit 1 if remediation required
 
 $RegistryKey = $null
-$RegistryKey = Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin" -Name BlockAADWorkplaceJoin
+$RegistryKey = Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin" -Name BlockAADWorkplaceJoin -ErrorAction SilentlyContinue
 
 try {
     if ($RegistryKey -eq $null) {
@@ -69,7 +69,7 @@ try {
 # exit 1 if remediation required
 
 $RegistryKey = $null
-$RegistryKey = Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin" -Name BlockAADWorkplaceJoin
+$RegistryKey = Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin" -Name BlockAADWorkplaceJoin  -ErrorAction SilentlyContinue
 
 try {
     if ($RegistryKey -eq $null) {
