@@ -50,7 +50,7 @@ try {
 	===========================================================================
 	 Created on:   	23/12/2021 11:23
 	 Created by:   	Mike Keeves
-	 Filename:     	ShortcutTeamsDetect.ps1
+	 Filename:     	ShortcutTeamsRemediate.ps1
 	===========================================================================
 	.DESCRIPTION
 		Identifies the current user has multiple copies of the Teams shortcut on desktop
