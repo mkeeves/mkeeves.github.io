@@ -2,52 +2,133 @@
 layout: post
 author: mike
 ---
-{% highlight powershell linenos %}
-#### Get AD Schema version 
+# General PowerShell Commands
+
+**Date Published**: January 28, 2022
+
+This article consolidates a variety of general-purpose PowerShell commands for IT administrators. From Active Directory to DNS, SharePoint, and Azure, these commands help streamline tasks and improve efficiency.
+
+---
+
+## **Active Directory**
+
+### Get Active Directory Schema Version
+Retrieve the schema version of your Active Directory:
+```powershell
 Get-ADObject (Get-ADRootDSE).schemaNamingContext -Property objectVersion
-#### Get groups with extension attribute
-Get-ADGroup -Filter * -Properties extensionAttribute15 | select name,extensionAttribute15
-#### Set Extension Attributes for array $i
+```
+
+### Get Groups with Extension Attributes
+List all groups with their `extensionAttribute15`:
+```powershell
+Get-ADGroup -Filter * -Properties extensionAttribute15 | Select name, extensionAttribute15
+```
+
+### Set Extension Attributes for Groups
+Apply a value to `extensionAttribute15` for a group array:
+```powershell
 foreach ($i in $groups) {Set-ADGroup $i -add @{extensionAttribute15="NoSync"}}
-#### Remove extension attribute from group
-Set-ADGroup "groupname" -clear "extensionAttribute15"
-#### Autopilot
+```
+
+### Remove Extension Attribute from a Group
+Clear `extensionAttribute15` for a specific group:
+```powershell
+Set-ADGroup "groupname" -Clear "extensionAttribute15"
+```
+
+---
+
+## **Autopilot**
+
+### Save and Generate Windows Autopilot Information
+Save the script and generate the CSV for Autopilot:
+```powershell
 Save-Script -Name Get-WindowsAutoPilotInfo -Path c:\temp
 Get-WindowsAutoPilotInfo.ps1 -OutputFile c:\temp\WindowsAutoPilotInfo.csv
-#### Sharepoint
+```
+
+---
+
+## **SharePoint and OneDrive**
+
+### Install SharePoint Online Module
+```powershell
 Install-Module -Name Microsoft.Online.SharePoint.PowerShell
+```
+
+### Connect to SharePoint Admin Site
+```powershell
 $SPAdminSite = "https://contoso-admin.sharepoint.com"
 Connect-SPOService -Url $SPAdminSite
-#### Get All OneDrive Sites
+```
+
+### List All OneDrive Sites
+Retrieve all personal OneDrive sites:
+```powershell
 Get-SPOSite -IncludePersonalSite $true -Limit all -Filter "Url -like '-my.sharepoint.com/personal/"
-#### Remove Sharepoint / OneDrive Site
+```
+
+### Remove SharePoint/OneDrive Site
+Delete a specific SharePoint or OneDrive site:
+```powershell
 Remove-SPOSite -Identity https://contoso-my.sharepoint.com/personal/j_doe_contoso_com
-#### Grant permissions to another users OneDrive
+```
+
+### Grant Permissions to Another User’s OneDrive
+```powershell
 Set-SPOUser -Site https://contoso-my.sharepoint.com/personal/j_doe_contoso_com -LoginName firstname.surname@contoso.com -IsSiteCollectionAdmin $false
-#### Exchange Powershell Module
-Install-Module -Name ExchangeOnlineManagement 
-#### Azure AD
-Get-AzureADUser -all $true | where {$_.UserType -ne "Member" -and $_.UserState -ne "Accepted"}
-#### Azure AD – Users group memberships
-Get-AzureADUser -Filter "UserPrincipalName eq 'firstname.surname@contoso.com'" |Get-AzureADUserMembership
-#### DNS Server copy secondary zones
+```
+
+---
+
+## **Exchange and Azure**
+
+### Install Exchange Online Management Module
+```powershell
+Install-Module -Name ExchangeOnlineManagement
+```
+
+### Get All Azure AD Users Except Members
+```powershell
+Get-AzureADUser -All $true | Where {$_.UserType -ne "Member" -and $_.UserState -ne "Accepted"}
+```
+
+### Retrieve Group Memberships of a Specific User
+```powershell
+Get-AzureADUser -Filter "UserPrincipalName eq 'firstname.surname@contoso.com'" | Get-AzureADUserMembership
+```
+
+---
+
+## **DNS Server**
+
+### Copy Secondary DNS Zones
+```powershell
 Get-DnsServerZone -ComputerName DNS1 | Where {$_.ZoneType -eq "Secondary"} | Add-DnsServerSecondaryZone -ComputerName DNS2
-#### Get a registry item
+```
+
+---
+
+## **Registry Operations**
+
+### Get a Registry Item
+```powershell
 Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\TSAppSrv\TSMSI"
-#### Get Members of distribution list and enumerate sender permissions
-$dist | select Name,RequireSenderAuthenticationEnabled,CustomAttribute7,@{Name='AcceptMessagesOnlyFromSendersOrMembers';Expression={$_.AcceptMessagesOnlyfromSendersOrMembers -join "/",","}} | Export-Csv c:\temp\Dist
-#### Get users default auth method
-Install-Module MSOnline
-Connect-msolservice
-(Get-MsolUser -UserPrincipalName firstname.surname@contoso.com).StrongAuthenticationMethods
-#### Prefer IPv4
-#Check if IPv4 IP address is preferred
+```
+
+---
+
+## **Network Configuration**
+
+### Prefer IPv4 over IPv6
+Check and modify preference for IPv4:
+```powershell
 ping $env:COMPUTERNAME
-#If the reply is IPv6 address, run following registry setting to just prefer ipv4 and reboot
+
 New-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters\" -Name "DisabledComponents" -Value 0x20 -PropertyType "DWord"
-#If DisabledComponents exists, use the set cmdlet
+
+# Modify if the property already exists
 Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters\" -Name "DisabledComponents" -Value 0x20
-#You need to reboot the computer in order for the changes to take effect
+
 Restart-Computer
-# From <https://msunified.net/2016/05/25/how-to-set-ipv4-as-preferred-ip-on-windows-server-using-powershell/>
-{% endhighlight %}
+```

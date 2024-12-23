@@ -2,10 +2,6 @@
 layout: post
 author: mike
 ---
-Here is a rewritten version of the article in a knowledge base format:
-
----
-
 # Configuring Split Horizon DNS in Windows Server with PowerShell
 
 **Date Published**: January 28, 2022
