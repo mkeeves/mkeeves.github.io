@@ -123,4 +123,4 @@ Access detailed logs saved in the specified `LogPath`. Each file is named after 
 ---
 
 ## **References**
-# https://blog.roostech.se/2016/02/use-powershell-jobs-to-ping-many-from-many-with-log.html
+https://blog.roostech.se/2016/02/use-powershell-jobs-to-ping-many-from-many-with-log.html
