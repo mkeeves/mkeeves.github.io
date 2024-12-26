@@ -1,14 +1,91 @@
-# iOS Shortcuts - one click Google Maps Navigation
+---
+layout: post
+author: mike
+---
+# One-Click Google Maps Navigation Using iOS Shortcuts
 
-There are built in widgets for Google Maps on iOS which allow you to quickly navigate to locations like Home or Work, but rely upon the location being saved in your Google account, require more than one press to begin navigation, and also from time to time don't work as expected, for example if your account is signed out. Creating the shortcut on iOS means I can now start navigation with less presses, and without reliance upon data in my google account.
+**Date Published**: September 11, 2024
 
-I began by following a guide from another blog (https://www.upsync.dev/2022/08/01/ios-google-maps-shortcut) to create the shortcut in such a way that was easy to reuse as a template. This worked just fine, but I found that in addition to pressing the shortcut button on my iPhone, once Google Maps opened I also needed to Start navigation.
+Google Maps on iOS offers built-in widgets for quick navigation to saved locations like Home or Work. However, these widgets often depend on data saved in your Google account, require multiple steps to start navigation, and may fail if you’re signed out. By creating a custom shortcut, you can bypass these limitations and enable one-click navigation directly to any destination, without relying on your Google account.
 
-After some googling, followed by a little trial and error, I amended the last 2 steps in the shortcut. The penultimate step now uses the URL of the Universal maps URI scheme, and the last step opens the x-callback-url.
+---
 
-Because shortcuts can be added as widgets on iOS, I can now start navigating locations I've saved using this shortcut very quickly. If I want to add another destination, then it's easy to duplicate the shortcut and amend the destination.
+## **Overview**
 
-Here is the final result...
+This guide demonstrates how to create a reusable iOS shortcut for Google Maps that:
+1. Starts navigation with a single tap.
+2. Does not depend on saved locations in your Google account.
+3. Can be easily duplicated and customized for multiple destinations.
+
+---
+
+## **Creating the Shortcut**
+
+Follow these steps to create the shortcut:
+
+### **Step 1: Create a New Shortcut**
+1. Open the **Shortcuts** app on your iPhone.
+2. Tap the **+** button to create a new shortcut.
+
+### **Step 2: Define the Destination**
+- Use the Universal Maps URI scheme for your destination:
+  ```plaintext
+  comgooglemaps://?daddr=123+Main+Street,+City,+State&directionsmode=driving
+  ```
+  Replace `123+Main+Street,+City,+State` with the desired address.
+
+---
+
+### **Step 3: Add an x-callback-url**
+Ensure the shortcut opens Google Maps and immediately starts navigation:
+- Add the following action to the shortcut:
+  ```plaintext
+  comgooglemaps-x-callback://?daddr=123+Main+Street,+City,+State&directionsmode=driving&x-success=shortcuts://
+  ```
+
+---
+
+### **Step 4: Test the Shortcut**
+1. Save the shortcut with a name like “Navigate to Work.”
+2. Add it as a widget on your Home Screen for quick access.
+3. Tap the shortcut to verify it opens Google Maps and starts navigation seamlessly.
+
+---
+
+## **Enhancements**
+
+### **1. Duplicate and Customize**
+Easily create shortcuts for multiple destinations:
+1. Duplicate the existing shortcut.
+2. Modify the address in the `daddr` parameter.
+
+### **2. Use Siri for Hands-Free Navigation**
+Assign Siri commands to each shortcut:
+- Go to **Settings > Siri & Search > Shortcuts** and record a custom phrase like “Navigate to Gym.”
+
+### **3. Error Handling**
+Ensure fallback options if Google Maps isn’t installed:
+- Add a check to open Apple Maps as a backup:
+  ```plaintext
+  if (App Exists: Google Maps) {
+      comgooglemaps://?daddr=123+Main+Street,+City,+State
+  } else {
+      maps://?daddr=123+Main+Street,+City,+State
+  }
+  ```
+
+---
+
+## **Benefits**
+
+1. **Reduced Steps**: Start navigation with a single tap.
+2. **Offline Reliability**: Avoid issues caused by being signed out of your Google account.
+3. **Customizable**: Easily create multiple shortcuts for different destinations.
+
+---
+
+By leveraging iOS Shortcuts and the Universal Maps URI scheme, you can streamline navigation and eliminate common issues with Google Maps widgets.
+
 ![Pic 1](/mkeeves.github.io_images/2024-09-11-ios-shortcuts-google-nav-1-click/1.jpg)
 
 ![Pic 2](/mkeeves.github.io_images/2024-09-11-ios-shortcuts-google-nav-1-click/2.jpg)
