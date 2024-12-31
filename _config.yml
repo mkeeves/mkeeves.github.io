@@ -4,7 +4,7 @@ title: mkeeves.com
 
 repository: mkeeves/mkeeves.github.io
 author: Mike Keeves
-logo: /_images/logo1.jpg
+logo: "/_images/logo1.jpg"
 
 #footer_links:
 #  - title: Twitter
@@ -28,7 +28,6 @@ google_fonts:
 ### Build settings ###
 
 #url: mkeeves.github.io
-#baseurl: ""
 
 collections:
   authors:
@@ -52,8 +51,6 @@ collections:
 
 #remote_theme: pages-themes/slate@v0.2.0
 remote_theme: "mmistakes/so-simple-theme@3.2.0"
-
-skin: "/assets/css/skins/default.css"
 
 plugins:
   - jekyll-feed

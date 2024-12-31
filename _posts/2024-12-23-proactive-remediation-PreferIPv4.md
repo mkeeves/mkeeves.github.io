@@ -3,91 +3,124 @@ layout: post
 author: mike
 ---
 
-# Proactive Remediations - PreferIPv4
+**Configuring Preference for IPv4 over IPv6 via Intune Proactive Remediations**
 
-Configures IPv4 to be preferred over IPv6. Requires reboot to take effect, which is not handled by script
+In certain network environments, prioritizing IPv4 over IPv6 can enhance compatibility and performance. This guide outlines how to configure Windows devices to prefer IPv4 using Intune's Proactive Remediation feature. Please note that a system reboot is required for the changes to take effect; this script does not handle the reboot process.
 
-## Detection Script:
-```
+**Detection Script**
+
+The following PowerShell script checks whether the system is configured to prefer IPv4 over IPv6 by examining the relevant registry setting.
+
+```powershell
 <#
-	.NOTES
-	===========================================================================
-	 Created on:   	31/01/2022 11:51
-	 Created by:   	Mike Keeves
-	 
-	 Filename:     	IPv4PreferredDetect.ps1
-	===========================================================================
-	.DESCRIPTION
-		Identifies if IPv4 is preferred over IPv6. A reboot is required after setting reg key, which is not handled by this script
+.NOTES
+===========================================================================
+    Created on:    31/01/2022
+    Created by:    Mike Keeves
+    Filename:      IPv4PreferredDetect.ps1
+===========================================================================
+.DESCRIPTION
+    Checks if the system is configured to prefer IPv4 over IPv6.
+    A reboot is required after setting the registry key; this script does not handle the reboot.
 #>
 
-# exit 0 if no remediation required
-# exit 1 if remediation required
+# Exit codes:
+# 0 - No remediation required
+# 1 - Remediation required
 
-$RegistryKey = $null
-$RegistryKey = Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters\" -Name DisabledComponents
+$RegistryPath = "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters"
+$RegistryName = "DisabledComponents"
+$DesiredValue = 32
 
 try {
-    if ($RegistryKey -eq $null) {
-        Write-Output "Key not present, so will need to add it" 
-        exit 1
-    } else {
-        Write-Output "Key present, now need to check value"
-        if ($RegistryKey.DisabledComponents -eq "32") {
-            Write-Output "Registry value correct, do nothing"
+    if (Test-Path $RegistryPath) {
+        $RegistryKey = Get-ItemProperty -Path $RegistryPath -Name $RegistryName -ErrorAction Stop
+        if ($RegistryKey.$RegistryName -eq $DesiredValue) {
+            Write-Output "Registry value is correct; no action needed."
             exit 0
-        }
-        else {
-            Write-Output "Registry value incorrect, so set it"
+        } else {
+            Write-Output "Registry value is incorrect; remediation required."
             exit 1
         }
+    } else {
+        Write-Output "Registry path not found; remediation required."
+        exit 1
     }
 } catch {
-	Write-Output "An issue occurred : $($_.Exception.Message)" | Out-Null
+    Write-Error "An error occurred: $_"
     exit 1
 }
 ```
 
+**Remediation Script**
 
-## Remediation Script:
-```
+The following PowerShell script sets the registry key to prefer IPv4 over IPv6 if it is not already configured.
+
+```powershell
 <#
-	.NOTES
-	===========================================================================
-	 Created on:   	31/01/2022 11:51
-	 Created by:   	Mike Keeves
-	 
-	 Filename:     	IPv4PreferredRemediate.ps1
-	===========================================================================
-	.DESCRIPTION
-		Identifies if IPv4 is preferred over IPv6, and if not remediates. A reboot is required after setting reg key, which is not handled by this script
+.NOTES
+===========================================================================
+    Created on:    31/01/2022
+    Created by:    Mike Keeves
+    Filename:      IPv4PreferredRemediate.ps1
+===========================================================================
+.DESCRIPTION
+    Configures the system to prefer IPv4 over IPv6 by setting the appropriate registry key.
+    A reboot is required after setting the registry key; this script does not handle the reboot.
 #>
 
-# exit 0 if no remediation required
-# exit 1 if remediation required
+# Exit codes:
+# 0 - Remediation successful or not required
+# 1 - Remediation failed
 
-$RegistryKey = $null
-$RegistryKey = Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters\" -Name DisabledComponents
+$RegistryPath = "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters"
+$RegistryName = "DisabledComponents"
+$DesiredValue = 32
 
 try {
-    if ($RegistryKey -eq $null) {
-        Write-Output "Key not present, so will need to add it"
-        New-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters\" -Name DisabledComponents -Value 0x20 -PropertyType "DWord"
+    if (-not (Test-Path $RegistryPath)) {
+        Write-Output "Registry path not found; creating path."
+        New-Item -Path $RegistryPath -Force -ErrorAction Stop | Out-Null
+    }
+    $RegistryKey = Get-ItemProperty -Path $RegistryPath -Name $RegistryName -ErrorAction SilentlyContinue
+    if ($RegistryKey -and $RegistryKey.$RegistryName -eq $DesiredValue) {
+        Write-Output "Registry value is correct; no action needed."
         exit 0
     } else {
-        Write-Output "Key present, now need to check value"
-        if ($RegistryKey.DisabledComponents -eq "32") {
-            Write-Output "Registry value correct, do nothing"
-            exit 0
-        }
-        else {
-            Write-Output "Registry value incorrect, so set it"
-            Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters\" -Name DisabledComponents -Value 0x20
-            exit 0
-        }
+        Write-Output "Setting registry value to prefer IPv4 over IPv6."
+        New-ItemProperty -Path $RegistryPath -Name $RegistryName -Value $DesiredValue -PropertyType DWord -Force -ErrorAction Stop | Out-Null
+        Write-Output "Registry value set successfully."
+        exit 0
     }
 } catch {
-	Write-Output "An issue occurred : $($_.Exception.Message)" | Out-Null
+    Write-Error "An error occurred during remediation: $_"
     exit 1
 }
 ```
+
+**Implementation Steps**
+
+1. **Access Intune Admin Center**: Navigate to the Microsoft Intune admin center.
+
+2. **Create Proactive Remediation**:
+   - Go to **Reports** > **Endpoint analytics** > **Proactive remediations**.
+   - Click on **+ Create script package**.
+   - Provide a name and description for the remediation.
+   - Upload the detection and remediation scripts provided above.
+   - Configure the schedule and scope according to organizational requirements.
+
+3. **Assign to Devices**: Assign the remediation to the appropriate device groups, ensuring that all relevant systems are targeted.
+
+4. **Monitor Deployment**: After deployment, monitor the remediation status to confirm successful application across devices.
+
+**Best Practices**
+
+- **Testing**: Before wide deployment, test the scripts on a subset of devices to verify functionality and prevent potential disruptions.
+
+- **Logging**: Ensure that logging is enabled and logs are monitored to detect any issues promptly.
+
+- **Error Handling**: The scripts include error handling to manage exceptions gracefully; review and customize error messages as needed for your environment.
+
+- **Documentation**: Maintain documentation of the remediation process, including script versions and deployment history, for future reference.
+
+By following this guide, IT administrators can configure Windows devices to prefer IPv4 over IPv6, enhancing network compatibility and performance in environments where IPv4 is predominant.
