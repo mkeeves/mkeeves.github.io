@@ -22,8 +22,18 @@ navigation:
 
 copyright: "© 2024 Mike Keeves"
 
-# Theme settings
-minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+# Chirpy theme settings
+theme_mode:
+  light: "light"
+  dark: "dark"
+  auto: "auto"
+
+# Custom assets
+custom_css:
+  - assets/css/custom.scss
+
+custom_js:
+  - assets/js/theme-toggle.js
 
 # Font settings
 font:
@@ -61,7 +71,7 @@ collections:
 #      layout: "default"
 
 #remote_theme: pages-themes/slate@v0.2.0
-remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+remote_theme: "cotes2020/jekyll-theme-chirpy@6.2.3"
 
 plugins:
   - jekyll-feed
@@ -71,6 +81,8 @@ plugins:
   - jekyll-include-cache
   - jekyll-paginate
   - jekyll-scholar
+  - jekyll-redirect-from
+  - jekyll-archives
 
 # Pagination
 paginate: 5
