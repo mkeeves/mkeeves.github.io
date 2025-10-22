@@ -33,21 +33,16 @@ collections:
   authors:
     output: true
 
-#defaults:
-#  - scope:
-#      path: ""
-#      type: "authors"
-#    values:
-#      layout: "author"
-#  - scope:
-#      path: ""
-#      type: "posts"
-#    values:
-#      layout: "post"
-#  - scope:
-#      path: ""
-#    values:
-#      layout: "default"
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
 
 # No remote theme - using custom styling
 #remote_theme: pages-themes/slate@v0.2.0
