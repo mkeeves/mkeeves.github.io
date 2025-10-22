@@ -1,6 +1,11 @@
 ---
 layout: post
+title: "Proactive Remediation: Credential Provider Password"
+date: 2024-10-31
 author: mike
+tags: [Intune, PowerShell, Security, Credential Provider, Proactive Remediation]
+categories: [Intune, Security]
+excerpt: "Intune Proactive Remediation solution for managing credential provider password settings across Windows devices."
 ---
 
 **Configuring Default Credential Provider to Password Using Intune Proactive Remediations**

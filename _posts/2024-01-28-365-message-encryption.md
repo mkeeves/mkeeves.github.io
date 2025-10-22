@@ -1,6 +1,11 @@
 ---
 layout: post
+title: "Microsoft 365 Message Encryption Configuration"
+date: 2024-01-28
 author: mike
+tags: [Microsoft 365, Security, Encryption, Office 365, Exchange]
+categories: [Microsoft 365, Security]
+excerpt: "Complete guide to configuring Microsoft 365 Message Encryption for enhanced email security and compliance."
 ---
 
 # Configuring Microsoft 365 Message Encryption (OME)

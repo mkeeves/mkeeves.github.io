@@ -1,6 +1,11 @@
 ---
 layout: post
+title: "Proactive Remediation: Prefer IPv4 over IPv6"
+date: 2024-12-23
 author: mike
+tags: [Intune, PowerShell, Network, IPv4, IPv6, Proactive Remediation]
+categories: [Intune, Network Configuration]
+excerpt: "Learn how to configure Windows devices to prefer IPv4 over IPv6 using Intune's Proactive Remediation feature with PowerShell scripts."
 ---
 
 **Configuring Preference for IPv4 over IPv6 via Intune Proactive Remediations**
