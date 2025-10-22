@@ -23,6 +23,7 @@ navigation:
 copyright: "© 2024 Mike Keeves"
 
 # Custom styling - no theme dependencies
+# All styling is handled inline in HTML files
 
 ### Build settings ###
 
