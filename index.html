@@ -26,7 +26,64 @@ author_profile: true
   </div>
 </div>
 
-<script src="/assets/js/dark-mode.js"></script>
+<script>
+// Simple Dark Mode Toggle - Inline for reliability
+function toggleTheme() {
+  const root = document.documentElement;
+  const currentTheme = root.getAttribute('data-theme') || 'light';
+  
+  if (currentTheme === 'dark') {
+    root.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme-preference', 'light');
+    updateToggleButton('light');
+  } else if (currentTheme === 'light') {
+    root.setAttribute('data-theme', 'auto');
+    localStorage.setItem('theme-preference', 'auto');
+    updateToggleButton('auto');
+  } else {
+    root.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme-preference', 'dark');
+    updateToggleButton('dark');
+  }
+}
+
+function updateToggleButton(theme) {
+  const icon = document.querySelector('.theme-icon');
+  const text = document.querySelector('.theme-text');
+  
+  if (icon && text) {
+    switch (theme) {
+      case 'light':
+        icon.textContent = '☀️';
+        text.textContent = 'Light';
+        break;
+      case 'dark':
+        icon.textContent = '🌙';
+        text.textContent = 'Dark';
+        break;
+      case 'auto':
+        icon.textContent = '🔄';
+        text.textContent = 'Auto';
+        break;
+    }
+  }
+}
+
+// Initialize theme on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const savedTheme = localStorage.getItem('theme-preference') || 'auto';
+  const root = document.documentElement;
+  
+  if (savedTheme === 'auto') {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+  } else {
+    root.setAttribute('data-theme', savedTheme);
+  }
+  
+  updateToggleButton(savedTheme);
+});
+</script>
 
 <div class="container">
   <section class="grid-modern">
