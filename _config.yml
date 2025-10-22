@@ -22,26 +22,7 @@ navigation:
 
 copyright: "© 2024 Mike Keeves"
 
-# Minimal Mistakes theme settings
-minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
-
-# Custom assets
-custom_css:
-  - assets/css/custom.scss
-
-custom_js:
-  - assets/js/theme-toggle.js
-
-# Font settings
-font:
-  text: "Inter"
-  code: "JetBrains Mono"
-
-google_fonts:
-  - name: "Inter"
-    weights: "300,400,500,600,700"
-  - name: "JetBrains Mono"
-    weights: "400,500,700"
+# Custom styling - no theme dependencies
 
 ### Build settings ###
 
@@ -67,14 +48,14 @@ collections:
 #    values:
 #      layout: "default"
 
+# No remote theme - using custom styling
 #remote_theme: pages-themes/slate@v0.2.0
-remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+#remote_theme: "mmistakes/minimal-mistakes@4.24.0"
 
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-  - jekyll-remote-theme
   - jekyll-include-cache
   - jekyll-paginate
 

@@ -1,9 +1,10 @@
 ---
-layout: single
+layout: default
 title: "All Posts"
 permalink: /posts/
-author_profile: true
 ---
+
+<link rel="stylesheet" href="/assets/css/main.css">
 
 <style>
 /* Import the same styles as index.html */
@@ -14,16 +15,16 @@ author_profile: true
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.6;
-    color: #1f2937;
-    background: #f9fafb;
-    transition: all 0.3s ease;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    color: #1f2937 !important;
+    background: #f9fafb !important;
+    transition: all 0.3s ease !important;
 }
 
 [data-theme="dark"] body {
-    background: #111827;
-    color: #f9fafb;
+    background: #111827 !important;
+    color: #f9fafb !important;
 }
 
 .container {
