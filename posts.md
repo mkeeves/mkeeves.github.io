@@ -482,7 +482,6 @@ body {
             <nav class="nav">
                 <a href="/">Home</a>
                 <a href="/posts/">All Posts</a>
-                <a href="/categories/">Categories</a>
                 <a href="https://qr.mkeeves.com" target="_blank">QR Generator</a>
             </nav>
         </div>
@@ -552,11 +551,8 @@ body {
                 <span class="tag">Network</span>
             </div>
 
-            <h3>Archive</h3>
-            <ul>
-                <li><a href="/2024/">2024 (25 posts)</a></li>
-                <li><a href="/2022/">2022 (8 posts)</a></li>
-            </ul>
+            <h3>About</h3>
+            <p>This blog covers PowerShell, Microsoft technologies, system administration, and automation solutions for enterprise IT environments.</p>
         </aside>
     </div>
 </div>
