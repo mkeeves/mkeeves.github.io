@@ -19,7 +19,14 @@
 </head>
 
 <body>
+    {%- include common-styles.html -%}
+    {%- include header.html -%}
+    
     {{ content }}
+    
+    {%- include footer.html -%}
+    {%- include theme-toggle.html -%}
+    {%- include theme-script.html -%}
     
     {%- if jekyll.environment == 'production' and site.google_analytics -%}
         {%- include google-analytics.html -%}

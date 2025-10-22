@@ -1,0 +1,40 @@
+<script>
+// Dark Mode Toggle
+function toggleTheme() {
+    const root = document.documentElement;
+    const currentTheme = root.getAttribute('data-theme') || 'light';
+    
+    if (currentTheme === 'dark') {
+        root.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme-preference', 'light');
+        updateToggleButton('light');
+    } else {
+        root.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme-preference', 'dark');
+        updateToggleButton('dark');
+    }
+}
+
+function updateToggleButton(theme) {
+    const icon = document.querySelector('.theme-icon');
+    const text = document.querySelector('.theme-text');
+    
+    if (icon && text) {
+        if (theme === 'light') {
+            icon.textContent = '🌙';
+            text.textContent = 'Dark';
+        } else {
+            icon.textContent = '☀️';
+            text.textContent = 'Light';
+        }
+    }
+}
+
+// Initialize theme
+document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('theme-preference') || 'light';
+    const root = document.documentElement;
+    root.setAttribute('data-theme', savedTheme);
+    updateToggleButton(savedTheme);
+});
+</script>
