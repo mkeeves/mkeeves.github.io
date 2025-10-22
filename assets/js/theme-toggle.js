@@ -1,4 +1,4 @@
-// Modern Dark Mode Toggle
+// Ultra-Modern Dark Mode Toggle
 (function() {
   'use strict';
 
@@ -20,9 +20,12 @@
     localStorage.setItem(THEME_KEY, theme);
   }
 
-  // Apply theme
+  // Apply theme with smooth transition
   function applyTheme(theme) {
     const root = document.documentElement;
+    
+    // Add transition class for smooth theme switching
+    root.classList.add('theme-transition');
     
     if (theme === THEMES.AUTO) {
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -30,6 +33,11 @@
     } else {
       root.setAttribute('data-theme', theme);
     }
+    
+    // Remove transition class after animation
+    setTimeout(() => {
+      root.classList.remove('theme-transition');
+    }, 300);
   }
 
   // Initialize theme
