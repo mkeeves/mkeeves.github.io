@@ -501,7 +501,67 @@ body {
 
             <!-- Posts -->
             <section class="section">
-                <h2>All Posts ({{ site.posts.size }} total)</h2>
+                <h2 id="recent">All Posts ({{ site.posts.size }} total)</h2>
+                
+                <!-- PowerShell Posts Section -->
+                <h3 id="powershell">PowerShell Posts</h3>
+                <div class="posts-grid">
+                    {% for post in site.posts %}
+                        {% if post.categories contains 'PowerShell' or post.tags contains 'PowerShell' %}
+                            <article class="post-card">
+                                <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
+                                <div class="post-meta">{{ post.date | date: "%B %d, %Y" }} • {{ post.categories | first }}</div>
+                                <p>{{ post.excerpt | truncate: 120 }}</p>
+                                <div class="post-tags">
+                                    {% for tag in post.tags limit: 3 %}
+                                        <span class="tag">{{ tag }}</span>
+                                    {% endfor %}
+                                </div>
+                            </article>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                
+                <!-- Intune Posts Section -->
+                <h3 id="intune">Intune Posts</h3>
+                <div class="posts-grid">
+                    {% for post in site.posts %}
+                        {% if post.categories contains 'Intune' or post.tags contains 'Intune' %}
+                            <article class="post-card">
+                                <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
+                                <div class="post-meta">{{ post.date | date: "%B %d, %Y" }} • {{ post.categories | first }}</div>
+                                <p>{{ post.excerpt | truncate: 120 }}</p>
+                                <div class="post-tags">
+                                    {% for tag in post.tags limit: 3 %}
+                                        <span class="tag">{{ tag }}</span>
+                                    {% endfor %}
+                                </div>
+                            </article>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                
+                <!-- Microsoft 365 Posts Section -->
+                <h3 id="m365">Microsoft 365 Posts</h3>
+                <div class="posts-grid">
+                    {% for post in site.posts %}
+                        {% if post.categories contains 'Microsoft 365' or post.tags contains 'Microsoft 365' or post.tags contains 'M365' %}
+                            <article class="post-card">
+                                <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
+                                <div class="post-meta">{{ post.date | date: "%B %d, %Y" }} • {{ post.categories | first }}</div>
+                                <p>{{ post.excerpt | truncate: 120 }}</p>
+                                <div class="post-tags">
+                                    {% for tag in post.tags limit: 3 %}
+                                        <span class="tag">{{ tag }}</span>
+                                    {% endfor %}
+                                </div>
+                            </article>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                
+                <!-- All Posts Section -->
+                <h3>All Posts</h3>
                 <div class="posts-grid">
                     {% for post in site.posts %}
                         <article class="post-card">
@@ -527,16 +587,14 @@ body {
                 <input type="text" class="search-input" placeholder="Search posts...">
             </div>
 
-            <h3>Quick Navigation</h3>
+            <h3>Quick Links</h3>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="#powershell">PowerShell</a></li>
-                <li><a href="#intune">Intune</a></li>
-                <li><a href="#m365">Microsoft 365</a></li>
-                <li><a href="#admin">System Admin</a></li>
-                <li><a href="#remediation">Proactive Remediation</a></li>
-                <li><a href="#security">Security</a></li>
-                <li><a href="#automation">Automation</a></li>
+                <li><a href="https://qr.mkeeves.com" target="_blank">QR Generator</a></li>
+                <li><a href="#recent">Recent Posts</a></li>
+                <li><a href="#powershell">PowerShell Posts</a></li>
+                <li><a href="#intune">Intune Posts</a></li>
+                <li><a href="#m365">Microsoft 365 Posts</a></li>
             </ul>
 
             <h3>Popular Tags</h3>
