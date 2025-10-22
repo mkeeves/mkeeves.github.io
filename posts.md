@@ -10,6 +10,14 @@ author_profile: true
     <h1 class="hero-title">All Posts</h1>
     <p class="hero-subtitle">Browse through all my blog posts covering PowerShell, Microsoft technologies, system administration, and more.</p>
   </div>
+  
+  <!-- Theme Toggle Button -->
+  <div style="position: absolute; top: 2rem; right: 2rem; z-index: 10;">
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-text">Dark</span>
+    </button>
+  </div>
 </div>
 
 <div class="container">

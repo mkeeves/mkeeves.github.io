@@ -147,29 +147,31 @@
     document.head.appendChild(style);
   }
 
+  // Global function for manual theme toggle
+  window.toggleTheme = function() {
+    const currentTheme = getThemePreference();
+    let newTheme;
+    
+    if (currentTheme === THEMES.LIGHT) {
+      newTheme = THEMES.DARK;
+    } else if (currentTheme === THEMES.DARK) {
+      newTheme = THEMES.AUTO;
+    } else {
+      newTheme = THEMES.LIGHT;
+    }
+    
+    setThemePreference(newTheme);
+    applyTheme(newTheme);
+    updateToggleButton(newTheme);
+  };
+
   // Initialize everything when DOM is ready
   document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     addSmoothTransitions();
     
-    // Add theme toggle to navigation if it exists
-    const nav = document.querySelector('.nav-modern, .navbar, nav');
-    if (nav) {
-      const toggle = createThemeToggle();
-      nav.appendChild(toggle);
-      updateToggleButton(getThemePreference());
-    }
-    
-    // Add theme toggle to a fixed position if no nav found
-    if (!nav) {
-      const toggle = createThemeToggle();
-      toggle.style.position = 'fixed';
-      toggle.style.top = '1rem';
-      toggle.style.right = '1rem';
-      toggle.style.zIndex = '1000';
-      document.body.appendChild(toggle);
-      updateToggleButton(getThemePreference());
-    }
+    // Update any existing toggle buttons
+    updateToggleButton(getThemePreference());
   });
 
 })();
