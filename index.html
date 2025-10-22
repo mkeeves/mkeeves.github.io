@@ -85,7 +85,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, a {
 </style>
 
 <script>
-// Simple Dark Mode Toggle - Inline for reliability
+// Advanced Dark Mode Toggle with Direct Style Application
 function toggleTheme() {
   const root = document.documentElement;
   const currentTheme = root.getAttribute('data-theme') || 'light';
@@ -93,15 +93,95 @@ function toggleTheme() {
   if (currentTheme === 'dark') {
     root.setAttribute('data-theme', 'light');
     localStorage.setItem('theme-preference', 'light');
+    applyLightMode();
     updateToggleButton('light');
   } else if (currentTheme === 'light') {
     root.setAttribute('data-theme', 'auto');
     localStorage.setItem('theme-preference', 'auto');
+    applyAutoMode();
     updateToggleButton('auto');
   } else {
     root.setAttribute('data-theme', 'dark');
     localStorage.setItem('theme-preference', 'dark');
+    applyDarkMode();
     updateToggleButton('dark');
+  }
+}
+
+function applyDarkMode() {
+  // Apply dark mode styles directly
+  document.body.style.backgroundColor = '#0a0a0a';
+  document.body.style.color = '#ffffff';
+  
+  // Apply to all text elements
+  const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, div, a, li, td, th');
+  textElements.forEach(el => {
+    el.style.color = '#ffffff';
+  });
+  
+  // Apply to cards and containers
+  const cards = document.querySelectorAll('.card, .feature-card, .post-card, .page__content, .page__inner-wrap, .page, .main, article');
+  cards.forEach(card => {
+    card.style.backgroundColor = '#0a0a0a';
+    card.style.color = '#ffffff';
+    card.style.borderColor = '#27272a';
+  });
+  
+  // Apply to navigation
+  const navs = document.querySelectorAll('.nav, .navigation, .site-nav, nav');
+  navs.forEach(nav => {
+    nav.style.backgroundColor = '#0a0a0a';
+    nav.style.borderColor = '#27272a';
+  });
+  
+  // Apply to footer
+  const footers = document.querySelectorAll('.footer, .page__footer, footer');
+  footers.forEach(footer => {
+    footer.style.backgroundColor = '#111111';
+    footer.style.color = '#a1a1aa';
+  });
+}
+
+function applyLightMode() {
+  // Apply light mode styles directly
+  document.body.style.backgroundColor = '#ffffff';
+  document.body.style.color = '#0f172a';
+  
+  // Apply to all text elements
+  const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, div, a, li, td, th');
+  textElements.forEach(el => {
+    el.style.color = '#0f172a';
+  });
+  
+  // Apply to cards and containers
+  const cards = document.querySelectorAll('.card, .feature-card, .post-card, .page__content, .page__inner-wrap, .page, .main, article');
+  cards.forEach(card => {
+    card.style.backgroundColor = '#ffffff';
+    card.style.color = '#0f172a';
+    card.style.borderColor = '#e2e8f0';
+  });
+  
+  // Apply to navigation
+  const navs = document.querySelectorAll('.nav, .navigation, .site-nav, nav');
+  navs.forEach(nav => {
+    nav.style.backgroundColor = '#ffffff';
+    nav.style.borderColor = '#e2e8f0';
+  });
+  
+  // Apply to footer
+  const footers = document.querySelectorAll('.footer, .page__footer, footer');
+  footers.forEach(footer => {
+    footer.style.backgroundColor = '#f8fafc';
+    footer.style.color = '#64748b';
+  });
+}
+
+function applyAutoMode() {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (prefersDark) {
+    applyDarkMode();
+  } else {
+    applyLightMode();
   }
 }
 
@@ -133,10 +213,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const root = document.documentElement;
   
   if (savedTheme === 'auto') {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+    root.setAttribute('data-theme', 'auto');
+    applyAutoMode();
+  } else if (savedTheme === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+    applyDarkMode();
   } else {
-    root.setAttribute('data-theme', savedTheme);
+    root.setAttribute('data-theme', 'light');
+    applyLightMode();
   }
   
   updateToggleButton(savedTheme);
