@@ -138,28 +138,34 @@ permalink: /posts/
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
+.post-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 .post-card h3,
 .post-card h4 {
     margin-bottom: 10px;
-}
-
-.post-card h3 a,
-.post-card h4 a {
     color: #1f2937;
-    text-decoration: none;
     font-size: 1.1rem;
     font-weight: 600;
     transition: color 0.2s ease;
 }
 
-[data-theme="dark"] .post-card h3 a,
-[data-theme="dark"] .post-card h4 a {
+[data-theme="dark"] .post-card h3,
+[data-theme="dark"] .post-card h4 {
     color: #f9fafb;
 }
 
-.post-card h3 a:hover,
-.post-card h4 a:hover {
+.post-card:hover h3,
+.post-card:hover h4 {
     color: #667eea;
+}
+
+[data-theme="dark"] .post-card:hover h3,
+[data-theme="dark"] .post-card:hover h4 {
+    color: #a5b4fc;
 }
 
 .post-meta {
@@ -236,9 +242,11 @@ permalink: /posts/
                     {% for post in site.posts %}
                         {% if post.categories contains 'PowerShell' or post.tags contains 'PowerShell' %}
                             <article class="post-card">
-                                <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
-                                <div class="post-meta">{{ post.date | date: "%B %d, %Y" }} • {{ post.categories | first }}</div>
-                                <p>{{ post.excerpt | truncate: 120 }}</p>
+                                <a href="{{ post.url }}" class="post-card-link">
+                                    <h4>{{ post.title }}</h4>
+                                    <div class="post-meta">{{ post.date | date: "%B %d, %Y" }} • {{ post.categories | first }}</div>
+                                    <p>{{ post.excerpt | truncate: 120 }}</p>
+                                </a>
                                 <div class="post-tags">
                                     {% for tag in post.tags limit: 3 %}
                                         <span class="tag">{{ tag }}</span>
@@ -255,9 +263,11 @@ permalink: /posts/
                     {% for post in site.posts %}
                         {% if post.categories contains 'Intune' or post.tags contains 'Intune' %}
                             <article class="post-card">
-                                <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
-                                <div class="post-meta">{{ post.date | date: "%B %d, %Y" }} • {{ post.categories | first }}</div>
-                                <p>{{ post.excerpt | truncate: 120 }}</p>
+                                <a href="{{ post.url }}" class="post-card-link">
+                                    <h4>{{ post.title }}</h4>
+                                    <div class="post-meta">{{ post.date | date: "%B %d, %Y" }} • {{ post.categories | first }}</div>
+                                    <p>{{ post.excerpt | truncate: 120 }}</p>
+                                </a>
                                 <div class="post-tags">
                                     {% for tag in post.tags limit: 3 %}
                                         <span class="tag">{{ tag }}</span>
@@ -274,9 +284,11 @@ permalink: /posts/
                     {% for post in site.posts %}
                         {% if post.categories contains 'Microsoft 365' or post.tags contains 'Microsoft 365' or post.tags contains 'M365' %}
                             <article class="post-card">
-                                <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
-                                <div class="post-meta">{{ post.date | date: "%B %d, %Y" }} • {{ post.categories | first }}</div>
-                                <p>{{ post.excerpt | truncate: 120 }}</p>
+                                <a href="{{ post.url }}" class="post-card-link">
+                                    <h4>{{ post.title }}</h4>
+                                    <div class="post-meta">{{ post.date | date: "%B %d, %Y" }} • {{ post.categories | first }}</div>
+                                    <p>{{ post.excerpt | truncate: 120 }}</p>
+                                </a>
                                 <div class="post-tags">
                                     {% for tag in post.tags limit: 3 %}
                                         <span class="tag">{{ tag }}</span>
@@ -292,9 +304,11 @@ permalink: /posts/
                 <div class="posts-grid">
                     {% for post in site.posts %}
                         <article class="post-card">
-                            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-                            <div class="post-meta">{{ post.date | date: "%B %d, %Y" }} • {{ post.categories | first }}</div>
-                            <p class="post-excerpt">{{ post.excerpt | default: post.content | strip_html | truncate: 120 }}</p>
+                            <a href="{{ post.url }}" class="post-card-link">
+                                <h3>{{ post.title }}</h3>
+                                <div class="post-meta">{{ post.date | date: "%B %d, %Y" }} • {{ post.categories | first }}</div>
+                                <p class="post-excerpt">{{ post.excerpt | default: post.content | strip_html | truncate: 120 }}</p>
+                            </a>
                             {% if post.tags %}
                                 <div class="post-tags">
                                     {% for tag in post.tags limit: 3 %}

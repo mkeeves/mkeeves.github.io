@@ -221,8 +221,9 @@
                 tag.setAttribute('tabindex', '0');
                 tag.setAttribute('aria-label', 'Search for ' + tag.textContent);
                 
-                // Add click handler
-                tag.addEventListener('click', function() {
+                // Add click handler - stop propagation so it doesn't trigger parent links
+                tag.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevent triggering parent link clicks
                     const tagText = tag.textContent.trim();
                     handleTagClick(tagText);
                 });
