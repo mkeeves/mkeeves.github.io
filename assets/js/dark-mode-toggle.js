@@ -7,6 +7,20 @@
 
   class DarkModeManager {
     constructor() {
+      // Check URL parameter first (for cross-domain sync)
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlTheme = urlParams.get('theme');
+      if (urlTheme && ['light', 'dark', 'auto'].includes(urlTheme)) {
+        localStorage.setItem('theme-preference', urlTheme);
+        // Clean URL by removing theme parameter
+        if (urlParams.has('theme')) {
+          const newParams = new URLSearchParams(urlParams);
+          newParams.delete('theme');
+          const newUrl = window.location.pathname + (newParams.toString() ? '?' + newParams.toString() : '');
+          window.history.replaceState({}, '', newUrl);
+        }
+      }
+      
       this.theme = this.getStoredTheme() || 'auto';
       this.init();
     }
@@ -18,6 +32,8 @@
       this.applyTheme();
       this.createToggleButton();
       this.bindEvents();
+      // Re-sync links after DOM changes (for dynamic content)
+      setTimeout(() => this.syncCrossDomainLinks(), 500);
     }
 
     /**
@@ -28,17 +44,79 @@
     }
 
     /**
-     * Get stored theme from localStorage
+     * Get stored theme from localStorage or cookie (for cross-domain sync)
      */
     getStoredTheme() {
-      return localStorage.getItem('theme-preference');
+      // Try localStorage first (faster)
+      const localTheme = localStorage.getItem('theme-preference');
+      if (localTheme) {
+        return localTheme;
+      }
+      
+      // Try cookie (for cross-domain sync)
+      const cookieTheme = this.getCookie('theme-preference');
+      if (cookieTheme) {
+        // Sync to localStorage for faster future access
+        localStorage.setItem('theme-preference', cookieTheme);
+        return cookieTheme;
+      }
+      
+      return null;
     }
 
     /**
-     * Store theme in localStorage
+     * Store theme in both localStorage and cookie (for cross-domain sync)
      */
     setStoredTheme(theme) {
       localStorage.setItem('theme-preference', theme);
+      // Set cookie with domain=.mkeeves.com so it's accessible from both sites
+      this.setCookie('theme-preference', theme, 365); // 1 year expiry
+    }
+
+    /**
+     * Get cookie value
+     */
+    getCookie(name) {
+      const nameEQ = name + '=';
+      const ca = document.cookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+      }
+      return null;
+    }
+
+    /**
+     * Set cookie with appropriate domain for cross-domain access
+     */
+    setCookie(name, value, days) {
+      let expires = '';
+      if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = '; expires=' + date.toUTCString();
+      }
+      
+      // Determine the appropriate domain
+      const hostname = window.location.hostname;
+      let domain = '';
+      
+      // If we're on a subdomain (e.g., qr.mkeeves.com), use .mkeeves.com
+      // If we're on root domain (mkeeves.com), use mkeeves.com
+      if (hostname.includes('.') && hostname.split('.').length > 2) {
+        // Subdomain - use .mkeeves.com
+        const parts = hostname.split('.');
+        domain = '.' + parts.slice(-2).join('.');
+      } else if (hostname.endsWith('mkeeves.com')) {
+        // Root domain - use mkeeves.com (no leading dot)
+        domain = 'mkeeves.com';
+      }
+      
+      // Set cookie with domain if we determined one
+      const cookieStr = name + '=' + (value || '') + expires + '; path=/' + 
+                        (domain ? '; domain=' + domain : '') + '; SameSite=Lax';
+      document.cookie = cookieStr;
     }
 
     /**
@@ -198,9 +276,34 @@
     }
 
     /**
+     * Sync cross-domain links - add theme parameter to links to qr.mkeeves.com
+     */
+    syncCrossDomainLinks() {
+      // Add theme parameter to any links pointing to qr.mkeeves.com or mkeeves.com domains
+      const links = document.querySelectorAll('a[href*="qr.mkeeves.com"], a[href*="mkeeves.com"]');
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          try {
+            const url = new URL(link.href);
+            // Only add theme param if it's a different domain
+            if (url.hostname !== window.location.hostname) {
+              url.searchParams.set('theme', this.theme);
+              link.href = url.toString();
+            }
+          } catch (err) {
+            // If URL parsing fails, ignore
+          }
+        });
+      });
+    }
+
+    /**
      * Bind event listeners
      */
     bindEvents() {
+      // Sync cross-domain links
+      this.syncCrossDomainLinks();
+      
       // Toggle button click - show/hide popup
       document.addEventListener('click', (e) => {
         if (e.target && e.target instanceof Element) {
