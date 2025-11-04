@@ -103,14 +103,14 @@
       let domain = '';
       
       // If we're on a subdomain (e.g., qr.mkeeves.com), use .mkeeves.com
-      // If we're on root domain (mkeeves.com), use mkeeves.com
+      // If we're on root domain (mkeeves.com), also use .mkeeves.com for cross-domain sharing
       if (hostname.includes('.') && hostname.split('.').length > 2) {
         // Subdomain - use .mkeeves.com
         const parts = hostname.split('.');
         domain = '.' + parts.slice(-2).join('.');
-      } else if (hostname.endsWith('mkeeves.com')) {
-        // Root domain - use mkeeves.com (no leading dot)
-        domain = 'mkeeves.com';
+      } else if (hostname === 'mkeeves.com' || hostname.endsWith('.mkeeves.com')) {
+        // Root domain or any mkeeves.com domain - use .mkeeves.com for cross-domain
+        domain = '.mkeeves.com';
       }
       
       // Set cookie with domain if we determined one
