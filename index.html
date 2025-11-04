@@ -142,6 +142,10 @@ title: Home
     text-align: center;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    color: inherit;
 }
 
 [data-theme="dark"] .category-card {
@@ -152,6 +156,7 @@ title: Home
 .category-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
 }
 
 [data-theme="dark"] .category-card:hover {
@@ -169,10 +174,19 @@ title: Home
     font-weight: 600;
     margin-bottom: 10px;
     color: #1f2937;
+    margin-top: 0;
 }
 
 [data-theme="dark"] .category-card h4 {
     color: #f9fafb;
+}
+
+.category-card:hover h4 {
+    color: #667eea;
+}
+
+[data-theme="dark"] .category-card:hover h4 {
+    color: #a5b4fc;
 }
 
 .category-count {
@@ -312,36 +326,36 @@ title: Home
             <section class="section">
                 <h2>Explore by Category</h2>
                 <div class="categories-grid">
-                    <div class="category-card">
+                    <a href="/posts/#powershell" class="category-card">
                         <span class="category-icon">⚡</span>
                         <h4>PowerShell</h4>
                         <div class="category-count">12 posts</div>
-                    </div>
-                    <div class="category-card">
+                    </a>
+                    <a href="/posts/#m365" class="category-card">
                         <span class="category-icon">☁️</span>
                         <h4>Microsoft 365</h4>
                         <div class="category-count">8 posts</div>
-                    </div>
-                    <div class="category-card">
+                    </a>
+                    <a href="/posts/" class="category-card">
                         <span class="category-icon">🛠️</span>
                         <h4>System Admin</h4>
                         <div class="category-count">15 posts</div>
-                    </div>
-                    <div class="category-card">
+                    </a>
+                    <a href="/posts/#intune" class="category-card">
                         <span class="category-icon">🔧</span>
                         <h4>Intune</h4>
                         <div class="category-count">6 posts</div>
-                    </div>
-                    <div class="category-card">
+                    </a>
+                    <a href="/posts/" class="category-card">
                         <span class="category-icon">🔒</span>
                         <h4>Security</h4>
                         <div class="category-count">9 posts</div>
-                    </div>
-                    <div class="category-card">
+                    </a>
+                    <a href="/posts/" class="category-card">
                         <span class="category-icon">🤖</span>
                         <h4>Automation</h4>
                         <div class="category-count">11 posts</div>
-                    </div>
+                    </a>
                 </div>
             </section>
 
