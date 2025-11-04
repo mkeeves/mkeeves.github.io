@@ -1,0 +1,17 @@
+{
+  "name": "mkeeves-github-io",
+  "version": "1.0.0",
+  "description": "Personal blog site built with Jekyll and TypeScript",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "clean": "rm -rf assets/js/*.js assets/js/*.js.map"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+
