@@ -210,7 +210,59 @@
             });
         }
 
+        // Initialize tag click handlers
+        function initializeTagClicks() {
+            const allTags = document.querySelectorAll('.tag');
+            
+            allTags.forEach(tag => {
+                // Make tags look clickable
+                tag.style.cursor = 'pointer';
+                tag.setAttribute('role', 'button');
+                tag.setAttribute('tabindex', '0');
+                tag.setAttribute('aria-label', 'Search for ' + tag.textContent);
+                
+                // Add click handler
+                tag.addEventListener('click', function() {
+                    const tagText = tag.textContent.trim();
+                    handleTagClick(tagText);
+                });
+                
+                // Add keyboard handler for accessibility
+                tag.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const tagText = tag.textContent.trim();
+                        handleTagClick(tagText);
+                    }
+                });
+            });
+        }
+        
+        // Handle tag click - search for that tag
+        function handleTagClick(tagText) {
+            // Get or create search input
+            let searchInput = document.querySelector('.search-input');
+            
+            // If we're on a page without a search input, navigate to posts page
+            if (!searchInput) {
+                sessionStorage.setItem('searchQuery', tagText);
+                window.location.href = '/posts/';
+                return;
+            }
+            
+            // Set search input value and trigger search
+            searchInput.value = tagText;
+            
+            // Trigger search immediately
+            performSearch(tagText);
+            
+            // Scroll to search input if it's not visible
+            searchInput.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            searchInput.focus();
+        }
+
         // Initialize on page load
         initializeSearch();
+        initializeTagClicks();
     });
 })();
