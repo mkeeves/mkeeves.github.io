@@ -17,6 +17,9 @@ navigation:
   - title: "QR Generator"
     url: https://qr.mkeeves.com
     external: true
+  - title: "TOTP Authenticator"
+    url: https://totp.mkeeves.com
+    external: true
 
 # Social links removed per user request
 
