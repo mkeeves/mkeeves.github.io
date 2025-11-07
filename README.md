@@ -38,4 +38,4 @@ bundle exec jekyll serve
 
 ## GitHub Pages Deployment
 
-The site is automatically built and deployed via GitHub Pages using Jekyll.
+The site is automatically built and deployed via GitHub Pages using Jekyll workflow.
