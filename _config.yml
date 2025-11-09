@@ -20,6 +20,9 @@ navigation:
   - title: "TOTP Authenticator"
     url: https://totp.mkeeves.com
     external: true
+  - title: "TinyURL"
+    url: https://tinyurl.mkeeves.com
+    external: true
 
 # Social links removed per user request
 
