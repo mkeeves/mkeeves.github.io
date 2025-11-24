@@ -23,6 +23,9 @@ navigation:
   - title: "TinyURL"
     url: https://tinyurl.mkeeves.com
     external: true
+  - title: "Password Generator"
+    url: https://password.mkeeves.com
+    external: true
 
 # Social links removed per user request
 
