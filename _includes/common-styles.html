@@ -96,6 +96,26 @@ body {
     align-items: center;
     gap: 6px;
     cursor: pointer;
+    color: #6b7280;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.nav-dropdown-toggle:hover {
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+[data-theme="dark"] .nav-dropdown-toggle {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .nav-dropdown-toggle:hover {
+    background: #374151;
+    color: #f9fafb;
 }
 
 .nav-dropdown-toggle::after {
@@ -111,7 +131,7 @@ body {
 .nav-dropdown-menu {
     position: absolute;
     top: 100%;
-    left: 0;
+    right: 0;
     margin-top: 8px;
     background: #ffffff;
     border: 1px solid #e5e7eb;
