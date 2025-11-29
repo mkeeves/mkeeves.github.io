@@ -6,11 +6,45 @@
             <nav class="nav">
                 <a href="/">Home</a>
                 <a href="/posts/">All Posts</a>
-                <a href="https://qr.mkeeves.com" target="_blank">QR Generator</a>
-                <a href="https://totp.mkeeves.com" target="_blank">TOTP Authenticator</a>
-                <a href="https://tinyurl.mkeeves.com" target="_blank">TinyURL</a>
-                <a href="https://password.mkeeves.com" target="_blank">Password Generator</a>
+                <div class="nav-dropdown">
+                    <span class="nav-dropdown-toggle">Apps</span>
+                    <div class="nav-dropdown-menu">
+                        <a href="https://qr.mkeeves.com" target="_blank">QR Generator</a>
+                        <a href="https://totp.mkeeves.com" target="_blank">TOTP Authenticator</a>
+                        <a href="https://tinyurl.mkeeves.com" target="_blank">TinyURL</a>
+                        <a href="https://password.mkeeves.com" target="_blank">Password Generator</a>
+                    </div>
+                </div>
             </nav>
         </div>
     </div>
 </header>
+
+<script>
+// Dropdown menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdown = document.querySelector('.nav-dropdown');
+    const toggle = document.querySelector('.nav-dropdown-toggle');
+    
+    if (dropdown && toggle) {
+        toggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            dropdown.classList.toggle('active');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+        
+        // Close dropdown on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                dropdown.classList.remove('active');
+            }
+        });
+    }
+});
+</script>

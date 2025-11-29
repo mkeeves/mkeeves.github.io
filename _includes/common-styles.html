@@ -86,6 +86,101 @@ body {
     color: #f9fafb;
 }
 
+/* Dropdown Menu */
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.nav-dropdown-toggle::after {
+    content: '▼';
+    font-size: 0.7rem;
+    transition: transform 0.2s ease;
+}
+
+.nav-dropdown.active .nav-dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 8px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 1000;
+    padding: 8px 0;
+}
+
+[data-theme="dark"] .nav-dropdown-menu {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+.nav-dropdown.active .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-dropdown-menu a {
+    display: block;
+    padding: 10px 16px;
+    color: #6b7280;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-radius: 0;
+}
+
+.nav-dropdown-menu a:hover {
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+[data-theme="dark"] .nav-dropdown-menu a {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .nav-dropdown-menu a:hover {
+    background: #374151;
+    color: #f9fafb;
+}
+
+@media (max-width: 768px) {
+    .nav-dropdown-menu {
+        position: static;
+        margin-top: 0;
+        box-shadow: none;
+        border: none;
+        border-top: 1px solid #e5e7eb;
+        border-radius: 0;
+        transform: none;
+    }
+    
+    [data-theme="dark"] .nav-dropdown-menu {
+        border-top-color: #374151;
+    }
+    
+    .nav-dropdown.active .nav-dropdown-menu {
+        transform: none;
+    }
+}
+
 /* Sidebar */
 .sidebar {
     background: #ffffff;
