@@ -68,7 +68,7 @@ plugins:
   - jekyll-redirect-from
 
 # Permalink structure (maintains old URL format for SEO)
-permalink: /:categories/:title/
+permalink: /:year/:month/:day/:title/
 
 # Pagination
 paginate: 5
