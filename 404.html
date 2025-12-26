@@ -1,0 +1,268 @@
+---
+layout: default
+title: "404 - Page Not Found"
+permalink: /404.html
+---
+
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<style>
+.error-container {
+    text-align: center;
+    padding: 80px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.error-code {
+    font-size: 120px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    line-height: 1;
+}
+
+.error-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1f2937;
+}
+
+[data-theme="dark"] .error-title {
+    color: #f9fafb;
+}
+
+.error-message {
+    font-size: 1.1rem;
+    color: #6b7280;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+[data-theme="dark"] .error-message {
+    color: #9ca3af;
+}
+
+.error-search {
+    margin: 40px 0;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.error-search input {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+[data-theme="dark"] .error-search input {
+    background: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+}
+
+.error-search input:focus {
+    border-color: #667eea;
+}
+
+.error-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+[data-theme="dark"] .btn-secondary {
+    color: #a5b4fc;
+    border-color: #a5b4fc;
+}
+
+.btn-secondary:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+    background: #a5b4fc;
+    color: #1f2937;
+}
+
+.helpful-links {
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 1px solid #e5e7eb;
+}
+
+[data-theme="dark"] .helpful-links {
+    border-top-color: #374151;
+}
+
+.helpful-links h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #1f2937;
+}
+
+[data-theme="dark"] .helpful-links h3 {
+    color: #f9fafb;
+}
+
+.quick-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    text-align: left;
+}
+
+.quick-link {
+    padding: 15px 20px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #1f2937;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+[data-theme="dark"] .quick-link {
+    background: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+}
+
+.quick-link:hover {
+    transform: translateX(5px);
+    border-color: #667eea;
+    background: #f3f4f6;
+}
+
+[data-theme="dark"] .quick-link:hover {
+    background: #374151;
+    border-color: #a5b4fc;
+}
+
+.quick-link-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.quick-link-desc {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+[data-theme="dark"] .quick-link-desc {
+    color: #9ca3af;
+}
+</style>
+
+<div class="container">
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <h1 class="error-title">Page Not Found</h1>
+        <p class="error-message">
+            Oops! The page you're looking for doesn't exist. It might have been moved, deleted, or the URL might be incorrect.
+            <br><br>
+            Don't worry though - let's help you find what you're looking for!
+        </p>
+
+        <div class="error-search">
+            <input type="text" id="search-input-404" placeholder="Search for posts..." onkeyup="if(event.key === 'Enter') window.location.href='/posts/?search=' + encodeURIComponent(this.value)">
+        </div>
+
+        <div class="error-actions">
+            <a href="/" class="btn btn-primary">Go to Homepage</a>
+            <a href="/posts/" class="btn btn-secondary">Browse All Posts</a>
+        </div>
+
+        <div class="helpful-links">
+            <h3>Popular Categories</h3>
+            <div class="quick-links">
+                <a href="/posts/#powershell" class="quick-link">
+                    <div class="quick-link-title">⚡ PowerShell</div>
+                    <div class="quick-link-desc">Scripts and automation</div>
+                </a>
+                <a href="/posts/#m365" class="quick-link">
+                    <div class="quick-link-title">☁️ Microsoft 365</div>
+                    <div class="quick-link-desc">Cloud administration</div>
+                </a>
+                <a href="/posts/#intune" class="quick-link">
+                    <div class="quick-link-title">🔧 Intune</div>
+                    <div class="quick-link-desc">Device management</div>
+                </a>
+                <a href="/posts/" class="quick-link">
+                    <div class="quick-link-title">🛠️ System Admin</div>
+                    <div class="quick-link-desc">IT best practices</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="helpful-links">
+            <h3>Recent Posts</h3>
+            <div class="quick-links">
+                {% for post in site.posts limit:4 %}
+                    <a href="{{ post.url }}" class="quick-link">
+                        <div class="quick-link-title">{{ post.title | truncate: 50 }}</div>
+                        <div class="quick-link-desc">{{ post.date | date: "%B %d, %Y" }}</div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Auto-suggest based on URL
+document.addEventListener('DOMContentLoaded', function() {
+    const path = window.location.pathname;
+    const searchInput = document.getElementById('search-input-404');
+
+    // Extract potential search terms from the URL
+    const urlParts = path.split('/').filter(part => part && part !== '404.html');
+    if (urlParts.length > 0) {
+        // Use the last part of the URL as a search suggestion
+        const lastPart = urlParts[urlParts.length - 1]
+            .replace(/-/g, ' ')
+            .replace(/\.html?$/i, '');
+        searchInput.placeholder = `Try searching for "${lastPart}"...`;
+    }
+});
+</script>
