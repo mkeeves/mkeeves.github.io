@@ -65,6 +65,10 @@ plugins:
   - jekyll-seo-tag
   - jekyll-include-cache
   - jekyll-paginate
+  - jekyll-redirect-from
+
+# Permalink structure (maintains old URL format for SEO)
+permalink: /:year/:month/:day/:title/
 
 # Pagination
 paginate: 5
